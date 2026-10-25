@@ -1,8 +1,11 @@
 package pl.wsb.bojo.facility.entity;
 
 import jakarta.persistence.*;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
 //Przechowuje adres obiektu sportowego
 @Embeddable //Nie tworzy osobnej tabeli. Jej pola staną się kolumnami w tabeli sports_facility
+@Entity
 public class FacilityAddress {
 
     @Column(name = "street", length = 80)
