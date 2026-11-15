@@ -24,10 +24,11 @@ insert into sports_facility (name, facility_type, hourly_rate, active, street, c
 -- Lab 02 booking
 -- ===== LAB 02 · booking =====
 
-INSERT INTO booking (customer_name, start_at, end_at, total_price, confirmed) VALUES
-('Jan Kowalski', '2026-11-04 18:00:00', '2026-11-04 19:00:00', 120.00, TRUE),
-('Adam Nowak', '2026-11-05 17:00:00', '2026-11-05 19:00:00', 360.00, TRUE),
-('Piotr Wiśniewski', '2026-11-06 20:00:00', '2026-11-06 21:00:00',150.00, FALSE);
+INSERT INTO booking (customer_name, start_at, end_at, total_price, confirmed, sports_facility_id) VALUES
+('Jan Kowalski', '2026-11-04 18:00:00', '2026-11-04 19:00:00', 120.00, TRUE,1),
+('Adam Nowak', '2026-11-05 17:00:00', '2026-11-05 19:00:00', 360.00, TRUE,1),
+('Piotr Wiśniewski', '2026-11-06 20:00:00', '2026-11-06 21:00:00',150.00, FALSE,2);
+
 
 -- Lab 02 customers
 
