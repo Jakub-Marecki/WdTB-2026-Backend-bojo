@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Set;
+import java.util.HashSet;
 import pl.wsb.bojo.booking.entity.Booking;
 
 @Entity
@@ -36,6 +38,9 @@ public class SportsFacility {
     private FacilityAddress address;
     @OneToMany(mappedBy = "facility") //Jeden obiekt sportowy może posiadać wiele rezerwacji
     private List<Booking> bookings = new ArrayList<>();
+    @ManyToMany
+    @JoinTable(name = "facility_amenity", joinColumns = @JoinColumn(name = "sports_facility_id"), inverseJoinColumns = @JoinColumn(name = "amenity_id"))
+    private Set<Amenity> amenities = new HashSet<>();
     protected SportsFacility() {
     }
 
@@ -77,4 +82,5 @@ public class SportsFacility {
     public List<Booking> getBookings() {
         return bookings;
     }
+    public Set<Amenity> getAmenities() {return amenities;}
 }
