@@ -1,6 +1,8 @@
 package pl.wsb.bojo.customer.entity;
 
 import jakarta.persistence.*;
+import pl.wsb.bojo.account.domain.UserAccount;
+
 import java.time.LocalDate;
 
 @Entity
@@ -30,7 +32,9 @@ public class Customer {
 
     @Column(name = "active", nullable = false)
     private Boolean active;
-
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name = "user_account_id", unique = true)
+    private UserAccount userAccount;
     protected Customer() {
     }
 
@@ -39,13 +43,15 @@ public class Customer {
             String email,
             String phone,
             LocalDate registeredOn,
-            Boolean active
+            Boolean active,
+            UserAccount userAccount
     ) {
         this.fullName = fullName; // Imie naziwsko
         this.email = email;
         this.phone = phone;
         this.registeredOn = registeredOn; // data rehestrachu
         this.active = active; // Aktywność konta
+        this.userAccount = userAccount;
     }
 
     public Long getId() {
@@ -71,4 +77,5 @@ public class Customer {
     public Boolean getActive() {
         return active;
     }
+    public UserAccount getUserAccount() {return userAccount;}
 }
