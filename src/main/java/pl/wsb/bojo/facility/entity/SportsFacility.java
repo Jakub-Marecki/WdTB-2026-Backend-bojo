@@ -2,6 +2,9 @@ package pl.wsb.bojo.facility.entity;
 
 import jakarta.persistence.*;
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.ArrayList;
+import pl.wsb.bojo.booking.entity.Booking;
 
 @Entity
 @Table(name = "sports_facility")
@@ -31,7 +34,8 @@ public class SportsFacility {
 
     @Embedded
     private FacilityAddress address;
-
+    @OneToMany(mappedBy = "facility") //Jeden obiekt sportowy może posiadać wiele rezerwacji
+    private List<Booking> bookings = new ArrayList<>();
     protected SportsFacility() {
     }
 
@@ -69,7 +73,8 @@ public class SportsFacility {
         return active;
     }
 
-    public FacilityAddress getAddress() {
-        return address;
+    public FacilityAddress getAddress() {return address;}
+    public List<Booking> getBookings() {
+        return bookings;
     }
 }

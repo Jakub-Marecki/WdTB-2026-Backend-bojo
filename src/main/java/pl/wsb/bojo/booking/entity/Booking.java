@@ -3,6 +3,7 @@ package pl.wsb.bojo.booking.entity;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import pl.wsb.bojo.customer.entity.Customer;
 import pl.wsb.bojo.facility.entity.SportsFacility;
 
 
@@ -38,6 +39,10 @@ public class Booking {
     @JoinColumn(name = "sports_facility_id",  nullable = false)
     private SportsFacility facility;
 
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "customer_id", nullable = false)
+    private  Customer customer;
+
     protected Booking() {
     }
 
@@ -47,7 +52,8 @@ public class Booking {
             LocalDateTime endAt,
             BigDecimal totalPrice,
             Boolean confirmed,
-            SportsFacility facility
+            SportsFacility facility,
+            Customer customer
     ) {
         this.customerName = customerName; // Imię i nazwisko klienta
         this.startAt = startAt; // Początek rezerwacji
@@ -55,6 +61,7 @@ public class Booking {
         this.totalPrice = totalPrice; // Koszt rezerwacji
         this.confirmed = confirmed; //Czy rezerwacja jest potwierdzona
         this.facility = facility; //Obiekt sportowy, którego dotyczy rezerwacja
+        this.customer = customer; // Każda rezerwacja ma wskazywać klienta który jej dokonał.
     }
 
     public Long getId() {
@@ -80,5 +87,7 @@ public class Booking {
     public Boolean getConfirmed() {
         return confirmed;
     }
+
     public SportsFacility getFacility() { return facility; }
+    public Customer getCustomer() { return customer; }
 }
