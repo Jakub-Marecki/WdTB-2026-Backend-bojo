@@ -1,4 +1,4 @@
-package pl.wsb.bojo.repository;
+package pl.wsb.bojo.booking.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
