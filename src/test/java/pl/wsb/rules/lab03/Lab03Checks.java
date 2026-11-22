@@ -40,7 +40,7 @@ final class Lab03Checks {
     /** Na ocenę 4: dwie relacje wiele-do-jednego. */
     static final int MIN_MANY_TO_ONE_GRADE_FOUR = 2;
     static final int MIN_TABLES = 5;
-    static final String REPOSITORY_LAYER = "repository";
+    static final String REPOSITORY_LAYER = "pl/wsb/bojo/booking/entity/repository";
     static final String SPRING_DATA_REPOSITORY = "org.springframework.data.repository.Repository";
 
     /** Nazwa metody zapytania pochodnego Spring Data: prefiks, opcjonalny dodatek (All, First…), „By”, warunek. */
